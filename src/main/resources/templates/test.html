@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.outside {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+.inside {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+
+#test {
+  width: 4800px;
+  height: 3200px;
+} 
+
+svg {
+  position: absolute;
+  width: 4800px;
+  height: 3200px;
+  top: 0;
+  left:0;
+}
+</style>
+</head>
+<body>
+
+<div class="outside">
+
+  <div class="inside">
+    <div id="test"
+    >
+	<svg></svg>
+  
+  </div>
+
+  </div>
+</div>
+
+</body>
+</html>
