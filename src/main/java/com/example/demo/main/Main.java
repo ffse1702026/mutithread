@@ -18,24 +18,35 @@ import com.example.demo.main.service.TestTaskService;
 
 @Controller
 public class Main {
+	
+	// to do insert db
 	@Autowired
 	private TestService testtestService;
 	
 	@RequestMapping("/test")
 	public String multilThread() throws InterruptedException, ExecutionException {
-		ExecutorService executorService = Executors.newFixedThreadPool(10);
+		ExecutorService executorService = Executors.newFixedThreadPool(20);
 		CompletionService<Boolean> executor = new ExecutorCompletionService<>(executorService);
 		List<Future<Boolean>> futures = new ArrayList<Future<Boolean>>();
+		int totalpage = 10000;
+		int quyen = 5;
+		int maCode = 2000;
 		
-		for(int i = 0; i <10; i++) {
-			TestTaskService testService = new TestTaskService(i * 1000, testtestService);
+		for(int i = 0; i <totalpage /100; i++) {
+			int start = i * 100 + 1;
+			int end = (i+1) * 100;
+			if(end % (totalpage/ quyen) == 0) {
+				maCode += 1;
+			}
+			TestTaskService testService = new TestTaskService(start,end ,maCode, testtestService);
 			futures.add(executor.submit(testService));
 		}
-		for(int i = 0; i<10; i++) {
-			Boolean result = executor.take().get();
+		for(int i = 0; i<100; i++) {
+			executor.take().get();
 		}
 		executorService.shutdown();
 		// TODO SEND MAIL HERE
+		
 		return "test";
 	}
 
