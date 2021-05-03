@@ -6,6 +6,7 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.iotsitewise.*;
+import com.amazonaws.services.iotsitewise.model.GetAssetPropertyValueRequest;
 public class Test {
 	AWSIoTSiteWiseAsync a;
 
@@ -28,5 +29,15 @@ public class Test {
 		AWSIoTSiteWise t = AWSIoTSiteWiseClientBuilder.standard()
 				.withRegion(region).withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();
 		return null;
+	}
+	
+	GetAssetPropertyValueRequest request = null; 
+	
+	String trs() {
+		AWSIoTSiteWise sitewisel = tes(basicAWSCredentials());
+		sitewisel.getAssetPropertyValue(request);
+		
+		return null;
+		
 	}
 }
