@@ -34,7 +34,7 @@ public class Main {
 		
 		for(int i = 0; i <totalpage /100; i++) {
 			int start = i * 100 + 1;
-			int end = (i+1) * 100;
+			int end = (i+1) * 100 > totalpage ? totalpage : (i+1) * 100;
 			if(end % (totalpage/ quyen) == 0) {
 				maCode += 1;
 			}
